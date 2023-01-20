@@ -20,7 +20,7 @@ const registerUser = async (req, res) => {
   // insert new user into database
   pool.query(`INSERT INTO users (username, password) VALUES ($1, $2)`, [user.username, user.password], (error, results) => {
     if (error) {
-      res.send('something went wrong')
+      res.status(400).send('something went wrong')
     }
     else {
       res.status(200).send('user added to database')
